@@ -1,0 +1,124 @@
+\chapter{Error Analysis}
+
+\dfn{Truncation Error}{
+    Error between the true value and approximate value due to chopping of the number from the series.
+}
+
+\ex{Taylor Series}{
+\begin{align*}
+f(x) = f(x_0) + (x&-x_0)f'(x_0) + \frac{(x-x_0)^2}{2!} f''(x) + \cdots \\
+x_0 &\neq 0
+\end{align*}
+}
+
+\ex{Maclaurin Series}{
+\begin{align*}
+f(x) = f(0) &+ xf'(0) + \frac{x^2}{2!} f''(0) + \cdots \\
+x &= 0
+\end{align*}
+}
+
+\dfn{Round-off Error}{
+    Error between the true value and approximate value due to rounding off.
+}
+
+\dfn{Absolute True Error}{
+Error between the true value and the approximate value
+
+\begin{equation*}
+    \epsilon_t = |p-p^*|
+\end{equation*}
+
+\begin{center}
+$$
+    \begin{aligned}
+        \epsilon_t &\text{ is the Absolute True Error} \\
+        p &\text{ is the True Error}  \\
+        p^* &\text{ is the Approximate Value}
+    \end{aligned}
+$$
+\end{center}
+}
+
+\dfn{Absolute Relative Error}{
+The relative error between the true value and the approximate value
+
+\begin{equation*}
+    \epsilon_r = \left|\frac{p-p^*}{p}\right| \cdot 100
+\end{equation*}
+
+\begin{center}
+$$
+    \begin{aligned}
+        \epsilon_r &\text{ is the Absolute Relative Error} \\
+        p &\text{ is the True Error}  \\
+        p^* &\text{ is the Approximate Value}
+    \end{aligned}
+$$
+\end{center}
+}
+
+\dfn{Absolute Approximation Error}{
+The relative error between the previous approximation and current approximation 
+
+\begin{equation*}
+    \epsilon_a = \left|\frac{p_0-p_1}{p_0}\right| \cdot 100
+\end{equation*}
+
+\begin{center}
+$$
+    \begin{aligned}
+        \epsilon_a &\text{ is the Absolute Approximation Error} \\
+        p_0 &\text{ is the Previous Approximation}  \\
+        p^* &\text{ is the Current Approximation}
+    \end{aligned}
+$$
+\end{center}
+}
+
+\dfn{Tolerance}{
+The maximum expected error in approximating error
+\begin{equation*}
+    \epsilon = 0.5 \cdot 10^{2-n} \ \% \\
+\end{equation*}
+
+\begin{center}
+    $$
+    \begin{aligned}
+        \epsilon &\text{ is the Tolerance} \\
+        n &\text{ is the required Significant figures or decimal places}
+    \end{aligned}
+    $$
+\end{center}
+
+\begin{equation*}
+    \epsilon = 10^{-n}
+\end{equation*}
+
+\begin{center}
+    $$
+    \begin{aligned}
+        \epsilon &\text{ is the Tolerance} \\
+        n &\text{ is the required Significant figures or decimal places}
+    \end{aligned}
+    $$
+\end{center}
+}
+\nt{
+Use $\epsilon_a$ instead of $\epsilon_r$ when true value is not available
+}
+
+\pagebreak
+
+\begin{algorithm}[H]
+    Find the series representing $f(x)$ \\
+    Find tolerance \\
+    Find first approximating using only first two numbers of the series \\
+    \While{$\epsilon_a > \epsilon$}{
+        Calculate new approximate using another number from the series \\
+        Calculate new $\epsilon_a$ \\
+    }
+    This value is the approximation \\
+
+    \caption{Approximating $f(x)$}
+\end{algorithm}
